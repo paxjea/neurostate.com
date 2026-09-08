@@ -1,31 +1,363 @@
-Media Library
-Every TikTok from @thexitcode — neuroscience, trauma, nervous system education, and Reel Triggers.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Library — TheNeuroState</title>
+  <meta name="description" content="The complete TikTok video library from @thexitcode — neuroscience, trauma, nervous system education, and Reel Triggers.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-Updated regularly ·
-Follow on TikTok
- All
-Reel Triggers
-Neuroscience
-Trauma & Healing
-Relationships
-Accountability
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-🎬 REEL TRIGGERS
-The affair isn't about betrayal — it's about cognitive dissonance
+    header {
+      text-align: center;
+      padding: 4rem 1.5rem 2rem;
+      border-bottom: 1px solid #1a1a1a;
+      background: linear-gradient(180deg, #0d0d0d 0%, #0a0a0a 100%);
+    }
 
-Why you went back — the pain-separation-reunion cycle
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: #f0f0f0;
+    }
 
-Neuroscience buzzwords are hurting relationship healing
+    header h1 span {
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-How childhood loyalty shapes adult relationships
+    header p {
+      color: #888;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
 
-The .50 caliber machine gun metaphor for trauma healing
+    header .sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
 
-Pain is a language. Trauma wounds are dialects.
+    header .sub a {
+      color: #8b5cf6;
+      text-decoration: none;
+    }
 
-🎬 REEL TRIGGERS
-Good Will Hunting — that scene isn't a breakthrough, it's freeze
+    header .sub a:hover {
+      text-decoration: underline;
+    }
 
-🎬 REEL TRIGGERS
-Eminem — the résumé is the tell
-TheNeuroState.com · @thexitcode · Neuroscience-informed transformation
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.5rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-bar button {
+      background: #141414;
+      border: 1px solid #222;
+      color: #aaa;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-bar button:hover,
+    .filter-bar button.active {
+      background: #1e1e1e;
+      border-color: #8b5cf6;
+      color: #e0e0e0;
+    }
+
+    .grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background: #111;
+      border: 1px solid #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .video-card:hover {
+      border-color: #333;
+      transform: translateY(-2px);
+    }
+
+    .video-card .embed-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #0d0d0d;
+      overflow: hidden;
+    }
+
+    .video-card .embed-wrap blockquote {
+      min-width: unset !important;
+      max-width: unset !important;
+    }
+
+    .video-card .embed-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-card .meta {
+      padding: 0.75rem 1rem;
+    }
+
+    .video-card .meta .title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ccc;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.4;
+    }
+
+    .video-card .meta .series {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #8b5cf6;
+      margin-bottom: 0.25rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      border-top: 1px solid #1a1a1a;
+      color: #555;
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: #8b5cf6;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.8rem; }
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem 3rem;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Media <span>Library</span></h1>
+  <p>Every TikTok from <strong>@thexitcode</strong> — neuroscience, trauma, nervous system education, and Reel Triggers.</p>
+  <div class="sub">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    Updated regularly · <a href="https://www.tiktok.com/@thexitcode" target="_blank">Follow on TikTok</a>
+  </div>
+</header>
+
+<div class="filter-bar">
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="reel-triggers">Reel Triggers</button>
+  <button data-filter="neuroscience">Neuroscience</button>
+  <button data-filter="trauma">Trauma & Healing</button>
+  <button data-filter="relationships">Relationships</button>
+  <button data-filter="accountability">Accountability</button>
+</div>
+
+<main class="grid" id="video-grid">
+
+  <!-- 1: Affair / Cognitive Dissonance (52K views) -->
+  <div class="video-card" data-tags="neuroscience relationships">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7620111788432002335" data-video-id="7620111788432002335" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7620111788432002335">@thexitcode</a>
+          <p>This scene isn't about an affair. It's about how the brain protects itself from shame.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <span class="series">🎬 Reel Triggers</span>
+      <div class="title">The affair isn't about betrayal — it's about cognitive dissonance</div>
+    </div>
+  </div>
+
+  <!-- 2: You didn't go back (255 likes) -->
+  <div class="video-card" data-tags="relationships addiction">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7675762377199029534" data-video-id="7675762377199029534" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7675762377199029534">@thexitcode</a>
+          <p>You didn't go back because the relationship suddenly became healthy. You went back because going back made the pain stop.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <div class="title">Why you went back — the pain-separation-reunion cycle</div>
+    </div>
+  </div>
+
+  <!-- 3: Neuroscience buzzwords (169 likes) -->
+  <div class="video-card" data-tags="neuroscience accountability">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7679878706298359070" data-video-id="7679878706298359070" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7679878706298359070">@thexitcode</a>
+          <p>Buzzwords without the work are making people emotionally stupid.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <div class="title">Neuroscience buzzwords are hurting relationship healing</div>
+    </div>
+  </div>
+
+  <!-- 4: Childhood conditioning (133 likes) -->
+  <div class="video-card" data-tags="trauma relationships">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7662414713262787871" data-video-id="7662414713262787871" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7662414713262787871">@thexitcode</a>
+          <p>Children are conditioned at a young age on loyalty, fear, and betrayal.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <div class="title">How childhood loyalty shapes adult relationships</div>
+    </div>
+  </div>
+
+  <!-- 5: The .50 cal — nomenclature vs mastery (26 likes) -->
+  <div class="video-card" data-tags="trauma accountability">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7680585504521260319" data-video-id="7680585504521260319" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7680585504521260319">@thexitcode</a>
+          <p>Knowing the nomenclature doesn't mean you've healed.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <div class="title">The .50 caliber machine gun metaphor for trauma healing</div>
+    </div>
+  </div>
+
+  <!-- 6: Pain is a language / Trauma wounds are dialects (45 likes) -->
+  <div class="video-card" data-tags="trauma accountability">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7673599880484474143" data-video-id="7673599880484474143" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7673599880484474143">@thexitcode</a>
+          <p>Pain is a language. Trauma wounds are dialects.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <div class="title">Pain is a language. Trauma wounds are dialects.</div>
+    </div>
+  </div>
+
+  <!-- 7: Reel Triggers — Freeze (Good Will Hunting) (12 likes) -->
+  <div class="video-card" data-tags="reel-triggers trauma">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7681313738183494942" data-video-id="7681313738183494942" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7681313738183494942">@thexitcode</a>
+          <p>This scene isn't about a breakthrough. It's freeze.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <span class="series">🎬 Reel Triggers</span>
+      <div class="title">Good Will Hunting — that scene isn't a breakthrough, it's freeze</div>
+    </div>
+  </div>
+
+  <!-- 8: Eminem — The Résumé Is The Tell -->
+  <div class="video-card" data-tags="reel-triggers accountability neuroscience">
+    <div class="embed-wrap">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thexitcode/video/7682827038956227871" data-video-id="7682827038956227871" style="max-width:100%;min-width:unset;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@thexitcode/video/7682827038956227871">@thexitcode</a>
+          <p>Somebody told him he didn't belong. He answered with a résumé. That's what fight actually is.</p>
+        </section>
+      </blockquote>
+    </div>
+    <div class="meta">
+      <span class="series">🎬 Reel Triggers</span>
+      <div class="title">Eminem — the résumé is the tell</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- TikTok embed script -->
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+<script>
+  // Filter buttons
+  document.querySelectorAll('.filter-bar button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.video-card').forEach(card => {
+        if (filter === 'all') {
+          card.style.display = '';
+          return;
+        }
+        const tags = card.dataset.tags || '';
+        card.style.display = tags.includes(filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<div class="footer">
+  <a href="https://theneurostate.com">TheNeuroState.com</a> · <a href="https://tiktok.com/@thexitcode" target="_blank">@thexitcode</a> · Neuroscience-informed transformation
+</div>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"206904c2bd714a1c9a8389972e22bfc7","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
